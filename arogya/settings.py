@@ -54,7 +54,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',    
 ]
 
-ROOT_URLCONF = 'complainFeedbackBackend.urls'
+ROOT_URLCONF = 'arogya.urls'
 
 TEMPLATES = [
     {
@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'complainFeedbackBackend.wsgi.application'
+WSGI_APPLICATION = 'arogya.wsgi.application'
 
 
 # Database
