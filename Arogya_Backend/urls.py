@@ -24,6 +24,7 @@ urlpatterns = [
     path('api/', include('api.urls')),
     path('api/', include('accounts.urls')), # To distinguish API endpoints
     path('api/', include('complainFeedback.urls')),
+    path('api/', include('healthContent.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
