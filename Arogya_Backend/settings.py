@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'complainFeedback',
     'healthContent',
+    'doctor',
     'django_filters',
 ]
 
