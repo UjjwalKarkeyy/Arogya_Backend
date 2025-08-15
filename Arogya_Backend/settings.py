@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'healthContent',
     'doctor',
     'django_filters',
+    'tipsDay',
 ]
 
 MIDDLEWARE = [
