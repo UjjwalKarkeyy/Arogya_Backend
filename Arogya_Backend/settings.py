@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'complainFeedback',
     'healthContent',
     'doctor',
-    'django_filters',
+    # 'django_filters',  # Temporarily commented out to test
 ]
 
 MIDDLEWARE = [
@@ -83,12 +83,8 @@ WSGI_APPLICATION = 'Arogya_Backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'complaint_feedback_db',
-        'USER': 'postgres',
-        'PASSWORD': 'root',  # Change this to your PostgreSQL password
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
