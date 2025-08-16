@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'complainFeedback',
     'healthContent',
     'doctor',
+    'surveyForm'
     # 'django_filters',  # Temporarily commented out to test
 ]
 
