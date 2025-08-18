@@ -28,6 +28,7 @@ urlpatterns = [
     path('api/', include('doctor.urls')),
     path('api/', include('surveyForm.urls')),
     path('api/', include('vaccineTracker.urls')),
+    path('news/', include('news.urls')),  # This connects /news/ to your news app
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
