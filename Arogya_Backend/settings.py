@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-import os
 from datetime import timedelta
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,17 +22,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-i6wg!n2oxlx+fod%nwqu-jvzbnw@3=-i0p)m*k02p*=@fse0bj"
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "10.0.2.2", "localhost", "192.168.1.73", "*"]
+ALLOWED_HOSTS = ["127.0.0.1", "10.0.2.2", "localhost", "192.168.1.73", "arogya.baryonstech.com", "37.27.104.131"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,10 +49,11 @@ INSTALLED_APPS = [
     'doctor',
     'surveyForm',
     'vaccineTracker',
-    # 'django_filters',  # Temporarily commented out to test
+    'django_filters',  # Temporarily commented out to test
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # must be high in the list
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -61,6 +63,9 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+# WhiteNoise optional compression/manifest (nice to have)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = "Arogya_Backend.urls"
 
@@ -86,9 +91,17 @@ WSGI_APPLICATION = "Arogya_Backend.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',   # works for psycopg2 or psycopg v3
+        'NAME': os.environ['DB_NAME'],
+        'USER': os.environ['DB_USER'],
+        'PASSWORD': os.environ['DB_PASS'],
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
+        'CONN_MAX_AGE': 60,  # keep connections alive to reduce overhead
+        'OPTIONS': {
+            'sslmode': os.environ.get('DB_SSLMODE', 'disable'),
+        },
     }
 }
 
@@ -128,6 +141,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = '/home/arogya/Arogya_Backend/staticfiles'  # collected static here
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -142,12 +157,14 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8081",
     "http://127.0.0.1:8081",
     "http://10.0.2.2:8081",
+    'https://arogya.baryonstech.com',
 ]
 CORS_ALLOW_CREDENTIALS = True
 
 
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+# Media (if you handle user uploads)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/arogya/Arogya_Backend/media'
 
 
 REST_FRAMEWORK = {
