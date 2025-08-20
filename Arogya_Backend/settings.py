@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'complainFeedback',
     'healthContent',
     'django_filters',
+    'doctor',
+    'doctorAppointment',
 ]
 
 MIDDLEWARE = [
