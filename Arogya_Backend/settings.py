@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 #django-insecure-i6wg!n2oxlx+fod%nwqu-jvzbnw@3=-i0p)m*k02p*=@fse0bj
-SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = "django-insecure-i6wg!n2oxlx+fod%nwqu-jvzbnw@3=-i0p)m*k02p*=@fse0bj"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -94,7 +94,7 @@ WSGI_APPLICATION = "Arogya_Backend.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',   # works for psycopg2 or psycopg v3
-        'NAME': os.environ['DB_NAME'],
+        'NAME': 'complain_feedback_db',
         'USER': os.environ['DB_USER'],
         'PASSWORD': os.environ['DB_PASS'],
         'HOST': os.environ.get('DB_HOST', 'localhost'),
