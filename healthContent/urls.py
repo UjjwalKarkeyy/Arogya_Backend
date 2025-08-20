@@ -6,7 +6,7 @@ from rest_framework.routers import DefaultRouter
 from .views import HealthCategoryViewSet, MediaContentViewSet, ContentRatingViewSet
 
 # Create router and register viewsets
-router = DefaultRouter()
+router = DefaultRouter()    
 router.register(r'categories', HealthCategoryViewSet, basename='healthcategory')
 router.register(r'content', MediaContentViewSet, basename='mediacontent')
 router.register(r'ratings', ContentRatingViewSet, basename='contentrating')
