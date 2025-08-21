@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'surveyForm',
     'Lab_Result',
     'news',
+    'helpLine',
 ]
 
 MIDDLEWARE = [
