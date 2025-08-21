@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'Lab_Result',
     'news',
     'helpLine',
+    'tips',
 ]
 
 MIDDLEWARE = [
