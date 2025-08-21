@@ -29,7 +29,7 @@ class UserVaccineRecordViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        qs = super().get_queryset()
+        qs = super().get_queryset().filter(user=self.request.user)
 
         name = self.request.query_params.get("name")
         date_given = self.request.query_params.get("date_given")
