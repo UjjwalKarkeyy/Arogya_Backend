@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'doctor',
     'doctorAppointment',
     'surveyForm',
+    'Lab_Result',
 ]
 
 MIDDLEWARE = [

@@ -28,6 +28,7 @@ urlpatterns = [
     path('api/', include('doctor.urls')),
     path('api/', include('doctorAppointment.urls')),
     path('api/', include('surveyForm.urls')),
+    path('api/', include('Lab_Result.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
