@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'doctorAppointment',
     'surveyForm',
     'Lab_Result',
+    'news',
 ]
 
 MIDDLEWARE = [
