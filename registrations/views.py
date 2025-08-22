@@ -14,26 +14,12 @@ from .serializers import RegistrationSerializer
 
 class RegistrationViewSet(viewsets.ModelViewSet):
     serializer_class = RegistrationSerializer
-    # AllowAny: we'll attach a default patient if unauthenticated
-    permission_classes = [permissions.AllowAny]
+    # Require authentication for health camp registration
+    permission_classes = [permissions.IsAuthenticated]
+    http_method_names = ['get', 'post', 'head', 'options']
 
     def get_queryset(self):
         user = self.request.user
-        if not user.is_authenticated:
-            # If default patient flow is enabled, show registrations for the default patient
-            if getattr(settings, "USE_DEFAULT_PATIENT_FOR_UNAUTH", False):
-                User = get_user_model()
-                try:
-                    default_user = User.objects.get(username=settings.DEFAULT_PATIENT_USERNAME)
-                except User.DoesNotExist:
-                    return Registration.objects.none()
-                return (
-                    Registration.objects.filter(user=default_user)
-                    .select_related("campaign")
-                    .prefetch_related("campaign__vaccines", "campaign__medicines")
-                )
-            # Otherwise, anonymous users see no registrations
-            return Registration.objects.none()
         return (
             Registration.objects.filter(user=user)
             .select_related("campaign")
@@ -45,23 +31,10 @@ class RegistrationViewSet(viewsets.ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        # Resolve user (AllowAny with default patient fallback)
+        # Resolve user - require authentication for health camp registration
         user = request.user
         if not user.is_authenticated:
-            if not getattr(settings, "USE_DEFAULT_PATIENT_FOR_UNAUTH", False):
-                raise NotAuthenticated("Authentication credentials were not provided.")
-            User = get_user_model()
-            user, _ = User.objects.get_or_create(
-                username=settings.DEFAULT_PATIENT_USERNAME,
-                defaults={
-                    "email": settings.DEFAULT_PATIENT_EMAIL,
-                    "full_name": settings.DEFAULT_PATIENT_FULL_NAME,
-                    "phone": settings.DEFAULT_PATIENT_PHONE,
-                },
-            )
-            if not user.has_usable_password():
-                user.set_password(settings.DEFAULT_PATIENT_PASSWORD)
-                user.save(update_fields=["password"])
+            raise NotAuthenticated("Authentication credentials were not provided.")
 
         campaign = serializer.validated_data.get("campaign")
         if campaign is None:

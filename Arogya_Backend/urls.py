@@ -35,6 +35,7 @@ urlpatterns = [
     path('api/', include('campaigns.urls')),
     path('api/', include('registrations.urls')),
     path('api/', include('vaccineTracker.urls')),
+    path('api/forum/', include('forum.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
