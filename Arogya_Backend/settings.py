@@ -51,6 +51,8 @@ INSTALLED_APPS = [
     'news',
     'helpLine',
     'tips',
+    'campaigns',
+    'registrations',
 ]
 
 MIDDLEWARE = [
