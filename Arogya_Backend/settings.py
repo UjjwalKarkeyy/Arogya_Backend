@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'tips',
     'campaigns',
     'registrations',
+    'forum',
 ]
 
 MIDDLEWARE = [
