@@ -1,0 +1,417 @@
+{
+  "info": {
+    "name": "Aryogya",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Vaccine",
+      "item": [
+        {
+          "name": "Vaccine List",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/vaccines",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "vaccines"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Signup",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/signup/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "signup",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"sairash\",\n  \"email\": \"gautamsairash@gmail.com\",\n  \"password\": \"12345678\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Login",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "noauth"
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/login/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "login",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"sai\",\n  \"password\": \"12345678\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "User Vaccine",
+      "item": [
+        {
+          "name": "Get Vaccinations",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDQ3NjY4LCJpYXQiOjE3NTU0MTE2NjgsImp0aSI6IjVlMjFjY2I2ODdmZTRlMDQ4YTk5OGU3M2Q3ZmQyMGZjIiwidXNlcl9pZCI6IjQifQ.ZJB17_JBzuHfgPc9H-mEC3B0DrjUGd7O8uWsOXwjASw",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/vaccinations/?name=&is_verified=&date_given=",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "vaccinations",
+                ""
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": ""
+                },
+                {
+                  "key": "is_verified",
+                  "value": ""
+                },
+                {
+                  "key": "date_given",
+                  "value": ""
+                }
+              ],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Add Vaccination",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDQ3NjY4LCJpYXQiOjE3NTU0MTE2NjgsImp0aSI6IjVlMjFjY2I2ODdmZTRlMDQ4YTk5OGU3M2Q3ZmQyMGZjIiwidXNlcl9pZCI6IjQifQ.ZJB17_JBzuHfgPc9H-mEC3B0DrjUGd7O8uWsOXwjASw",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/vaccinations/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "vaccinations",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vaccine_id\": \"10fd53d6-a5b9-43c8-b74b-ddfd335c889b\",\n  \"dose_number\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Notification",
+          "event": [],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDQ3NjY4LCJpYXQiOjE3NTU0MTE2NjgsImp0aSI6IjVlMjFjY2I2ODdmZTRlMDQ4YTk5OGU3M2Q3ZmQyMGZjIiwidXNlcl9pZCI6IjQifQ.ZJB17_JBzuHfgPc9H-mEC3B0DrjUGd7O8uWsOXwjASw",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/vaccinations/notifications",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "vaccinations",
+                "notifications"
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Delete Vaccination",
+          "event": [],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDQ3NjY4LCJpYXQiOjE3NTU0MTE2NjgsImp0aSI6IjVlMjFjY2I2ODdmZTRlMDQ4YTk5OGU3M2Q3ZmQyMGZjIiwidXNlcl9pZCI6IjQifQ.ZJB17_JBzuHfgPc9H-mEC3B0DrjUGd7O8uWsOXwjASw",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/vaccinations/b766cccf-3ed5-43ac-b26f-2928a00b5a11/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "vaccinations",
+                "b766cccf-3ed5-43ac-b26f-2928a00b5a11",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        },
+        {
+          "name": "Update Vaccination Record",
+          "event": [],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDQ3NjY4LCJpYXQiOjE3NTU0MTE2NjgsImp0aSI6IjVlMjFjY2I2ODdmZTRlMDQ4YTk5OGU3M2Q3ZmQyMGZjIiwidXNlcl9pZCI6IjQifQ.ZJB17_JBzuHfgPc9H-mEC3B0DrjUGd7O8uWsOXwjASw",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/vaccinations/85e9c8b1-8838-4896-9af8-f4f63be4156c/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "vaccinations",
+                "85e9c8b1-8838-4896-9af8-f4f63be4156c",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"date_given\": \"2025-08-02\",\n  \"notes\": \"Updated date\",\n  \"patient_name\": \"ance\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Admin Vaccines",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDQ3Njg5LCJpYXQiOjE3NTU0MTE2ODksImp0aSI6IjExMmU1MDc5ZDdjMzQ0YjZhM2RiOGYyYjMxMDhkMjA3IiwidXNlcl9pZCI6IjUifQ.GbhiwbXaYpqq-LeZ3XFhjDGLwKdpIAv8ZBrqyVtQlAs",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/admin/vaccines/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "vaccines",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pfizer\",\n  \"manufacturer\": \"Pfizer Inc\",\n  \"max_doses\": 2,\n  \"dose_interval_days\": 21\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Verify Vaccination",
+          "event": [],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "auth": {
+              "type": "bearer",
+              "bearer": {
+                "key": "token",
+                "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU1NDQ3Njg5LCJpYXQiOjE3NTU0MTE2ODksImp0aSI6IjExMmU1MDc5ZDdjMzQ0YjZhM2RiOGYyYjMxMDhkMjA3IiwidXNlcl9pZCI6IjUifQ.GbhiwbXaYpqq-LeZ3XFhjDGLwKdpIAv8ZBrqyVtQlAs",
+                "type": "string"
+              }
+            },
+            "description": "",
+            "url": {
+              "raw": "http://127.0.0.1:8000/api/admin/vaccinations/85e9c8b1-8838-4896-9af8-f4f63be4156c/verify/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1:8000"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "vaccinations",
+                "85e9c8b1-8838-4896-9af8-f4f63be4156c",
+                "verify",
+                ""
+              ],
+              "query": [],
+              "variable": []
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": []
+}

@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'tips',
     'campaigns',
     'registrations',
+    'vaccineTracker'
 ]
 
 MIDDLEWARE = [
