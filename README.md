@@ -30,6 +30,11 @@ python manage.py createsuperuser
 ```
 Follow the prompts to create your admin user.
 
+Seed default vaccines to the database
+```bash
+python manage.py seed_vaccines
+```
+
 Run the development server
 ```bash
 python manage.py runserver

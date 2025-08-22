@@ -34,6 +34,7 @@ urlpatterns = [
     path('api/', include('tips.urls')),
     path('api/', include('campaigns.urls')),
     path('api/', include('registrations.urls')),
+    path('api/', include('vaccineTracker.urls')),
     path('api/forum/', include('forum.urls')),
 ]
 
